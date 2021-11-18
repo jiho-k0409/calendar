@@ -13,18 +13,67 @@ prevMonth.addEventListener('click', function(event){
         month=12;
         titleMonth.innerHTML = month;
     };
+    makeDate()
 });
 
 nextMonth.addEventListener('click', function(event){
     month +=1;
     titleMonth.innerHTML = month;
-    console.log(month);
     if (month>12) {
         month=1
         titleMonth.innerHTML = month;
-        //함수 밖에서는 왜 실행안됨?
     };
+    makeDate()
 });
 
+function thirtyOne(){
+    console.log('31일')
+}
+function thirty(){
+    console.log('30일')
+}
+function twemtyNine(){
+    console.log('29일')
+}
 
+function makeDate(){
+    if(month==1){
+        thirtyOne();
+    };
+    if(month==2){
+        twemtyNine()
+    };
+    if(month==3){
+        thirtyOne();
+    };
+    if(month==4){
+        thirty();
+    };
+    if(month==5){
+        thirtyOne();
+    };
+    if(month==6){
+        thirty();
+    };
+    if(month==7){
+        thirtyOne();
+    };
+    if(month==8){
+        thirtyOne();
+    };
+    if(month==9){
+        thirty();
+    };
+    if(month==10){
+        thirtyOne();
+    };
+    if(month==11){
+        thirty();
+    };
+    if(month==12){
+        thirtyOne();
+    };
+};
 
+var date = document.querySelectorAll('.date');
+console.log(date)
