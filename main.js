@@ -27,13 +27,16 @@ nextMonth.addEventListener('click', function(event){
 });
 
 function thirtyOne(){
-    console.log('31일')
+    revealDate30();
+    revealDate31();
 }
 function thirty(){
-    console.log('30일')
+    revealDate30();
+    concealDate31();
 }
 function twemtyNine(){
-    console.log('29일')
+    concealDate31();
+    concealDate30();
 }
 
 function makeDate(){
@@ -75,5 +78,15 @@ function makeDate(){
     };
 };
 
-var date = document.querySelectorAll('.date');
-console.log(date)
+function concealDate30(){
+    document.querySelector('#threeO').style.display='none';
+};
+function concealDate31(){
+    document.querySelector('#threeOne').style.display='none';
+};
+function revealDate30(){
+    document.querySelector('#threeO').style.display='block';
+};
+function revealDate31(){
+    document.querySelector('#threeOne').style.display='block';
+};
