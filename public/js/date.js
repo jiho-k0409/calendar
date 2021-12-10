@@ -4,14 +4,6 @@ const prevMonth = document.querySelector('.prev');
 const nextMonth = document.querySelector('.next');
 const titleMonth = document.querySelector('.month');
 
-function addButton(date){
-    var nowDate = document.getElementById(`${date}`)
-    nowDate.addEventListener('click',(event)=>{
-        console.log('클릭됨')
-    })
-}
-
-
 titleMonth.innerHTML = month;
 
 prevMonth.addEventListener('click', function(event){
@@ -23,6 +15,8 @@ prevMonth.addEventListener('click', function(event){
     };
     makeDate()
 });
+
+
 
 nextMonth.addEventListener('click', function(event){
     month +=1;
@@ -99,39 +93,52 @@ function revealDate31(){
     document.getElementById('31').style.display='inline';
 };
 
+function addButton(date){
+    var nowDate = document.getElementById(`${date}`)
+    nowDate.addEventListener('click',(event)=>{
+        const hidden = document.getElementById('something')
+        if(hidden != undefined){
+            hidden.id = `${month}.${date}`
+            hidden.value = `${month}.${date}`
+        }else{
+            hidden.id = `something`
+        }
+    })
+}
+
+
 function addAllButton(){
     addButton(1)
-addButton(2)
-addButton(3)
-addButton(4)
-addButton(5)
-addButton(6)
-addButton(7)
-addButton(8)
-addButton(9)
-addButton(10)
-addButton(11)
-addButton(12)
-addButton(13)
-addButton(14)
-addButton(15)
-addButton(16)
-addButton(17)
-addButton(18)
-addButton(19)
-addButton(20)
-addButton(21)
-addButton(22)
-addButton(23)
-addButton(24)
-addButton(25)
-addButton(26)
-addButton(27)
-addButton(28)
-addButton(29)
-addButton(30)
-addButton(31)
+    addButton(2)
+    addButton(3)
+    addButton(4)
+    addButton(5)
+    addButton(6)
+    addButton(7)
+    addButton(8)
+    addButton(9)
+    addButton(10)
+    addButton(11)
+    addButton(12)
+    addButton(13)
+    addButton(14)
+    addButton(15)
+    addButton(16)
+    addButton(17)
+    addButton(18)
+    addButton(19)
+    addButton(20)
+    addButton(21)
+    addButton(22)
+    addButton(23)
+    addButton(24)
+    addButton(25)
+    addButton(26)
+    addButton(27)
+    addButton(28)
+    addButton(29)
+    addButton(30)
+    addButton(31)
 }
 
 addAllButton()
-
