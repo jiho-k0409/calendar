@@ -1,42 +1,77 @@
+const { Console } = require('console');
 var express = require('express');
 var fs = require('fs');
 
-
 const app = express();
 const port = 3000;
+var router = express.Router();
 
 app.use(express.static('public'));
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
+app.set('view engine','ejs');
 
 app.get('/', (req, res)=>{
-  res.sendFile(__dirname+'/main.html');
+  let document = {};
+  let dateArray = [];
+  let fileArray=[];
+  let selectedMonth = req.query.month;
+  
+  const files = fs.readdirSync('public/data','utf8');
+  files.forEach(function(element){
+    let splitElement = element.split('_',1)[0];
+    let date = element.split('.',1)[0];
+    let dateMonth = date.split('_',1)[0];
+    let dateDate = date.split('_',2)[1];
+    let finalDate = `${dateMonth}월 ${dateDate}일`;
+    if (splitElement===selectedMonth){
+      let toDoText = fs.readFileSync(`./public/data/${element}`);
+      toDoText=toDoText.toString();
+      dateArray.push(finalDate);
+      fileArray.push(toDoText);
+    }else if(splitElement!==selectedMonth){ 
+      console.log('it dosent match with month')
+    }else if(files.length===0){
+      dateArray='일정이 없습니다'
+      fileArray='일정이 없습니다'
+      console.log('이게 실행되네')
+    }
+  });
+  console.log(dateArray)
+  console.log(fileArray)
+  res.render('index',{date : dateArray, description : fileArray})
 })
 
-app.post('/toDoProcess', function(req,res){
-  let body = req.body;
-  let toDo = body.toDo;
-  let id = body.id;
-  console.log(body)
-  fs.writeFile(`public/data/${id}.txt`,`${toDo}`,'utf-8',function(err){
-    if (err === null) 
-      { console.log('success'); 
-    } else 
-      { console.log('fail'); };
+
+app.get('/create',(req,res)=>{
+  res.render('create')
+})
+
+app.post('/create/process', (req,res)=>{
+  let month = req.body.month
+  let date = req.body.date
+  let toDo = req.body.toDo
+  fs.writeFile(`./public/data/${month}_${date}.txt`,toDo,(err)=>{
+    if (err) throw err;
+    console.log('The file has been saved')
   })
-  res.redirect(301,'/');
+  res.redirect(301,`/?month=${month}`)
 })
 
-/*fs.readFile(`../data/${body.id}`, 'utf8' , (err, data) => {
-  if (err) {
-    console.error(err);
-    return
-  }
-  return data;
-})*/
-
-
+app.post('/delete_process',(req,res)=>{
+  console.log(req.body)
+  var body = req.body
+  var date = body.date
+  let replacedDate = date.replace('월 ','_')
+  let month = date.split('월',1)[0]
+  let fileName = replacedDate.replace('일 ','.txt')
+  console.log(fileName)
+  fs.unlink(`./public/data/${fileName}`,(err)=>{
+    if (err) throw err;
+  })
+  res.redirect(301,`/?month=${month}`)
+})
+ 
 app.listen(port, ()=>{
   console.log(`Example app listenign at http://localhost:${port}`)
 })
