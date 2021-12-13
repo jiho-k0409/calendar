@@ -6,3 +6,12 @@ const Month = document.querySelector('#todayMonth')
 Month.innerHTML = month
 const Day = document.querySelector('#todayDate')
 Day.innerHTML = day
+
+let schedule = document.getElementsByClassName('schedule')
+let reOrder = []
+for (var i=0;i<schedule.length;){
+    reOrder.push(schedule[i])
+    
+}
+reOrder.sort();
+console.log(reOrder)

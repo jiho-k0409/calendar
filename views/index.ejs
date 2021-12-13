@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partial/head.ejs') %>
+  <body>
+    <%- include('./partial/today.ejs') %>
+    <h1>Class Info</h1>
+    <nav>
+      <ul>
+        <li class="month"><a href="/?month=1">1</a></li>
+        <li class="month"><a href="/?month=2">2</a></li>
+        <li class="month"><a href="/?month=3">3</a></li>
+        <li class="month"><a href="/?month=4">4</a></li>
+        <li class="month"><a href="/?month=5">5</a></li>
+        <li class="month"><a href="/?month=6">6</a></li>
+        <li class="month"><a href="/?month=7">7</a></li>
+        <li class="month"><a href="/?month=8">8</a></li>
+        <li class="month"><a href="/?month=9">9</a></li>
+        <li class="month"><a href="/?month=10">10</a></li>
+        <li class="month"><a href="/?month=11">11</a></li>
+        <li class="month"><a href="/?month=12">12</a></li>
+      </ul>
+    </nav>
+    <a href="/create">일정 만들기</a>
+    <% console.log('ejs data :',date,'&',description)%>
+    <ul>
+    <% if (date.length !== 0){%>
+        <% for (var i=0;i<date.length;){ %>
+            <li>
+            <h3><%= date[i]%></h3>
+            <p><%=description[i]%></p>
+            <form action="/delete_process" method="post">
+                <input type="hidden" name="date"value="<%= date[i]%>"> 
+                <input type="submit" value="삭제">
+            </form>
+        </li>
+            <% i = i+1 %>
+        <%}%>
+        <%}else{%>
+            <li>
+              <h3>일정을 입력하세요</h3>
+              <p>일정 만들기를 클릭하세요</p>
+            </li>
+          <%}%>
+        
+    </ul>
+    <script src="/js/date.js"></script>
+
+
+      
+      
+  </body>
+</html>
