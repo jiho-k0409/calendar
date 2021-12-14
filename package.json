@@ -5,7 +5,7 @@
     "express": "^4.17.1"
   },
   "scripts": {
-    "start": "pm2 start server.js"
+    "start": "node server.js"
   },
   "name": "calendar",
   "version": "1.0.0",
