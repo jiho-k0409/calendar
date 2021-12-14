@@ -4,7 +4,7 @@ var fs = require('fs');
 var sA = require('./sort')
 
 const app = express();
-const port = 3000;
+//const port = 3000;
 var router = express.Router();
 
 app.use(express.static('public'));
@@ -75,6 +75,4 @@ app.post('/delete_process',(req,res)=>{
   res.redirect(301,`/?month=${month}`)
 })
  
-app.listen(port, ()=>{
-  console.log(`Example app listenign at http://localhost:${port}`)
-})
+app.listen(process.env.PORT || 5000)
