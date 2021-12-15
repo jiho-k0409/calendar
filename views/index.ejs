@@ -6,43 +6,45 @@
     <h1>Class Info</h1>
     <nav>
       <ul>
-        <li class="month"><a href="/?month=1">1</a></li>
-        <li class="month"><a href="/?month=2">2</a></li>
-        <li class="month"><a href="/?month=3">3</a></li>
-        <li class="month"><a href="/?month=4">4</a></li>
-        <li class="month"><a href="/?month=5">5</a></li>
-        <li class="month"><a href="/?month=6">6</a></li>
-        <li class="month"><a href="/?month=7">7</a></li>
-        <li class="month"><a href="/?month=8">8</a></li>
-        <li class="month"><a href="/?month=9">9</a></li>
-        <li class="month"><a href="/?month=10">10</a></li>
-        <li class="month"><a href="/?month=11">11</a></li>
-        <li class="month"><a href="/?month=12">12</a></li>
+        <li class="month"><a href="/?month=1">1월</a></li>
+        <li class="month"><a href="/?month=2">2월</a></li>
+        <li class="month"><a href="/?month=3">3월</a></li>
+        <li class="month"><a href="/?month=4">4월</a></li>
+        <li class="month"><a href="/?month=5">5월</a></li>
+        <li class="month"><a href="/?month=6">6월</a></li>
+        <li class="month"><a href="/?month=7">7월</a></li>
+        <li class="month"><a href="/?month=8">8월</a></li>
+        <li class="month"><a href="/?month=9">9월</a></li>
+        <li class="month"><a href="/?month=10">10월</a></li>
+        <li class="month"><a href="/?month=11">11월</a></li>
+        <li class="month"><a href="/?month=12">12월</a></li>
       </ul>
     </nav>
     <a href="/create">일정 만들기</a>
     <ul>
     <% if (date.length !== 0){%>
         <% for (var i=0;i<date.length;){ %>
-            <li>
-            <h3><%= date[i]%></h3>
-            <p><%=description[i]%></p>
+            <li class="scheduleContainer">
+            <h3 class="date"><%= date[i]%></h3>
+            <p class="description"><%=description[i]%></p>
             <form action="/delete_process" method="post">
                 <input type="hidden" name="date"value="<%= date[i]%>"> 
-                <input type="submit" value="삭제">
+                <input type="submit" value="삭제"></input>
             </form>
         </li>
             <% i = i+1 %>
         <%}%>
         <%}else{%>
-            <li>
-              <h3>일정을 입력하세요</h3>
-              <p>일정 만들기를 클릭하세요</p>
+            <li class="scheduleContainer">
+              <h3 class="date">일정 입력</h3>
+              <p class="description">일정 만들기를 클릭하세요</p>
             </li>
           <%}%>
-        
     </ul>
+    
     <script src="/js/date.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    
 
 
       
