@@ -27,10 +27,15 @@
             <li class="scheduleContainer">
             <h3 class="date"><%= date[i]%></h3>
             <p class="description"><%=description[i]%></p>
-            <form action="/delete_process" method="post">
+            <% if(todays!==undefined){%>
+
+            <% }else{%>
+              <form action="/delete_process" method="post">
                 <input type="hidden" name="date"value="<%= date[i]%>"> 
                 <input type="submit" value="삭제"></input>
-            </form>
+              </form>
+            <% } %> 
+              
         </li>
             <% i = i+1 %>
         <%}%>

@@ -2,10 +2,16 @@ const { Console } = require('console');
 var express = require('express');
 var fs = require('fs');
 var sA = require('./sort')
+var dateObj = new Date();
+var nowMonth = dateObj.getUTCMonth() + 1; //months from 1-12
+var nowDay = dateObj.getUTCDate();
+
+
 
 const app = express();
 //const port = 3000;
 var router = express.Router();
+
 
 app.use(express.static('public'));
 app.use(express.json()); // for parsing application/json
@@ -13,26 +19,40 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 app.set('view engine','ejs');
 
 app.get('/', (req, res)=>{
+  let todays = []
   let dateArray = [];
   let fileArray=[];
   let selectedMonth = req.query.month;
-
+  console.log(selectedMonth)
   const files = fs.readdirSync('public/data','utf8');
-
+  if(selectedMonth===undefined){
+    
+    const todaySchedule=files.indexOf(`${nowMonth}.${nowDay}.txt`)
+    if (todaySchedule!==-1){
+      let toDoText = fs.readFileSync(`./public/data/${nowMonth}.${nowDay}.txt`);
+    toDoText=toDoText.toString();
+      dateArray.push(`${nowMonth}월 ${nowDay}일`)
+      fileArray.push(toDoText)
+      todays.push(true)
+    }else{
+      dateArray.push('오늘의 일정이 없습니다')
+      fileArray.push('오늘의 일정이 없습니다')
+      todays.push(false)
+    }
+  }
+  
+    
   files.forEach(function(element){
     let splitElement = element.split('.',3);
     let date = splitElement[1];
     let month = splitElement[0];
-    console.log({
-      date : date,
-      month:month
-    })
     let finalDate = `${month}월 ${date}일`;
     if (month===selectedMonth){
       let toDoText = fs.readFileSync(`./public/data/${element}`);
       toDoText=toDoText.toString();
       dateArray.push(finalDate);
       fileArray.push(toDoText);
+      todays.push(true)
       sA.arr(dateArray,fileArray,month)
     }else if(month!==selectedMonth){ 
 
@@ -40,7 +60,7 @@ app.get('/', (req, res)=>{
 
     }
   });
-  res.render('index',{date : dateArray, description : fileArray})
+  res.render('index',{date : dateArray, description : fileArray, todays : todays})
 })
 
 
@@ -70,4 +90,4 @@ app.post('/delete_process',(req,res)=>{
   res.redirect(301,`/?month=${month}`)
 })
  
-app.listen(process.env.PORT || 5000)
+app.listen(process.env.PORT || 3000)
