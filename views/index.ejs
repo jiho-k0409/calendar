@@ -27,7 +27,7 @@
             <li class="scheduleContainer">
             <h3 class="date"><%= date[i]%></h3>
             <p class="description"><%=description[i]%></p>
-            <% if(todays!==undefined){%>
+            <% if(todays[0]!==undefined){%>
 
             <% }else{%>
               <form action="/delete_process" method="post">

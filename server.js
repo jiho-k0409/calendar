@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 app.set('view engine','ejs');
 
 app.get('/', (req, res)=>{
-  let todays = []
+  let todays = [];
   let dateArray = [];
   let fileArray=[];
   let selectedMonth = req.query.month;
@@ -52,7 +52,7 @@ app.get('/', (req, res)=>{
       toDoText=toDoText.toString();
       dateArray.push(finalDate);
       fileArray.push(toDoText);
-      todays.push(true)
+      
       sA.arr(dateArray,fileArray,month)
     }else if(month!==selectedMonth){ 
 
