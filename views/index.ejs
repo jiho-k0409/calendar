@@ -3,9 +3,9 @@
   <%- include('./partial/head.ejs') %>
   <body>
     <%- include('./partial/today.ejs') %>
-    <h1>Class Info</h1>
+    <a id="title" href="/"><h1>Class Info</h1></a>
     <nav>
-      <ul>
+      <ul class="month_container">
         <li class="month"><a href="/?month=1">1월</a></li>
         <li class="month"><a href="/?month=2">2월</a></li>
         <li class="month"><a href="/?month=3">3월</a></li>
@@ -18,36 +18,38 @@
         <li class="month"><a href="/?month=10">10월</a></li>
         <li class="month"><a href="/?month=11">11월</a></li>
         <li class="month"><a href="/?month=12">12월</a></li>
+        <a class="create" href="/create"><button class="create_btn">+</button></a>
       </ul>
     </nav>
-    <a href="/create">일정 만들기</a>
-    <ul>
-    <% if (date.length !== 0){%>
-        <% for (var i=0;i<date.length;){ %>
-            <li class="scheduleContainer">
-            <h3 class="date"><%= date[i]%></h3>
-            <p class="description"><%=description[i]%></p>
-            <% if(todays[0]!==undefined){%>
+    <div id="for_align">
+      <ul id='mainContainer'>
+      <% if (date.length !== 0){%>
+          <% for (var i=0;i<date.length;){ %>
+              <li class="scheduleContainer">
+              <h3 class="date"><%= date[i]%></h3>
+              <p class="description" ><%=description[i]%></p>
+              <% if(todays[0]!==undefined){%>
 
-            <% }else{%>
-              <form action="/delete_process" method="post">
-                <input type="hidden" name="date"value="<%= date[i]%>"> 
-                <input type="submit" value="삭제"></input>
-              </form>
-            <% } %> 
-              
-        </li>
-            <% i = i+1 %>
-        <%}%>
-        <%}else{%>
-            <li class="scheduleContainer">
-              <h3 class="date">일정 입력</h3>
-              <p class="description">일정 만들기를 클릭하세요</p>
-            </li>
+              <% }else{%>
+                <form action="/delete_process" method="post">
+                  <input type="hidden" name="date"value="<%= date[i]%>"> 
+                  <input class="btn delete" type="submit" value="삭제"></input>
+                </form>
+              <% } %> 
+                
+          </li>
+              <% i = i+1 %>
           <%}%>
-    </ul>
-    
+          <%}else{%>
+              <li class="scheduleContainer">
+                <h3 class="date">일정 입력</h3>
+                <p class="description">일정 만들기를 클릭하세요</p>
+              </li>
+            <%}%>
+      </ul>
+    </div>
     <script src="/js/date.js"></script>
+    <script src="/js/something.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     
 
