@@ -1,4 +1,3 @@
-const { Console } = require('console');
 var express = require('express');
 var fs = require('fs');
 var sA = require('./sort')
@@ -26,7 +25,6 @@ app.get('/', (req, res)=>{
   console.log(selectedMonth)
   const files = fs.readdirSync('public/data','utf8');
   if(selectedMonth===undefined){
-    
     const todaySchedule=files.indexOf(`${nowMonth}.${nowDay}.txt`)
     if (todaySchedule!==-1){
       let toDoText = fs.readFileSync(`./public/data/${nowMonth}.${nowDay}.txt`);
@@ -89,5 +87,12 @@ app.post('/delete_process',(req,res)=>{
   })
   res.redirect(301,`/?month=${month}`)
 })
- 
+/* 
+app.post('/done',(req,res)=>{
+  var body = req.body
+  var done = body.done
+  var date = body.date
+  res.redirect(301,`/?${date}`)
+})*/
+
 app.listen(process.env.PORT || 3000)
