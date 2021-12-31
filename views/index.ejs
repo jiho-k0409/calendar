@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
   <%- include('./partial/head.ejs') %>
-    
+  <body>
+    <%- include('./partial/today.ejs') %> 
+  <a id="title" href="/"><h1>TODOLIST</h1></a>
+  <%- include('./partial/header.ejs') %> 
+  
     <div id="for_align">
-      <ul id='mainContainer'>
+      
       <% if (date.length !== 0){%>
           <% for (var i=0;i<date.length;){ %>
-              <li class="scheduleContainer">
-                <div>
+              <div class="scheduleContainer">
+                <div class="to_do">
                   <h3 class="date"><%= date[i]%></h3>
                   <p class="description" ><%=description[i]%></p>
                 </div>  
@@ -15,29 +19,29 @@
               <% if(todays[0]!==undefined){%>
 
               <% }else{%>
-                <form class='delete_form' action="/delete_process" method="post">
-                  <input type="hidden" name="date"value="<%= date[i]%>"> 
-                  <input class="btn delete" type="submit" value="삭제"></input>
-                </form>
+                <div id="form_container">
+                  <% let splitElement = date[i].split(' ');%>
+                  <% let splited = splitElement[1]; %> 
+                  <% let splitedDate = splited.split('일')[0]; %>
+                  <form class='delete_form' action="/delete_process" method="post">
+                    <input type="hidden" name="date"value="<%= date[i]%>"> 
+                    <input class="btn" type="submit" value="삭제"></input>
+                  </form>
+                    <a class="update" href="/update?month=<%= selectedMonth %>&date=<%= splitedDate %>  "><button class="btn">수정</button></a>
+                </div>
               <% } %> 
                 
-          </li>
+              </div>
               <% i = i+1 %>
           <%}%>
           <%}else{%>
-              <li class="scheduleContainer">
+              <div class="scheduleContainer">
                 <h3 class="date">일정 입력</h3>
                 <p class="description">일정 만들기를 클릭하세요</p>
-              </li>
+              </div>
             <%}%>
-      </ul>
+      
     </div>
     <script src="/js/date.js"></script>
-    <script src="/js/ajax.js"></script>
-    
-
-
-      
-      
   </body>
 </html>

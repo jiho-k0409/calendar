@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partial/head.ejs') %> 
+<body>
+  <%- include('./partial/today.ejs') %> 
+  <a id="title" href="/"><h1>TODOLIST</h1></a>
+
+<h2><%= `${month}월 ${date}일` %></h2>
+<form id='create' action="/update/process" method="post"   >
+    <textarea name="toDo" id="toDo" cols="30" rows="10"><%= file %></textarea>
+    <input class="btn" type="submit" value="수정하기">
+  </form>
+  <script src="/js/date.js"></script>
+</body>
+</html>

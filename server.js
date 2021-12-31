@@ -12,6 +12,7 @@ const app = express();
 var router = express.Router();
 
 
+
 app.use(express.static('public'));
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -22,7 +23,6 @@ app.get('/', (req, res)=>{
   let dateArray = [];
   let fileArray=[];
   let selectedMonth = req.query.month;
-  console.log(selectedMonth)
   const files = fs.readdirSync('public/data','utf8');
   if(selectedMonth===undefined){
     const todaySchedule=files.indexOf(`${nowMonth}.${nowDay}.txt`)
@@ -58,7 +58,7 @@ app.get('/', (req, res)=>{
 
     }
   });
-  res.render('index',{date : dateArray, description : fileArray, todays : todays})
+  res.render('index',{date : dateArray, description : fileArray, todays : todays, selectedMonth : selectedMonth})
 })
 
 
@@ -76,6 +76,22 @@ app.post('/create/process', (req,res)=>{
   res.redirect(301,`/?month=${month}`)
 })
 
+app.get('/update',(req,res)=>{
+  let month = req.query.month
+  let date = req.query.date
+  const file = fs.readFileSync(`./public/data/${month}.${date}.txt`,'utf-8')
+  res.render('update',{month:month,date:date,file:file})
+})
+
+app.post('/update/process', (req,res)=>{
+  let month = req.query.month
+  let date = req.query.date
+  fs.writeFile(`./public/data/${month}.${date}.txt`,toDo,(err)=>{
+    if (err) throw err;
+  })
+  res.redirect(301,`/?month=${month}`)
+})
+
 app.post('/delete_process',(req,res)=>{
   var body = req.body
   var date = body.date
@@ -87,12 +103,17 @@ app.post('/delete_process',(req,res)=>{
   })
   res.redirect(301,`/?month=${month}`)
 })
-/* 
-app.post('/done',(req,res)=>{
-  var body = req.body
-  var done = body.done
-  var date = body.date
-  res.redirect(301,`/?${date}`)
-})*/
+
+
+
+var expressErrorHandler = require('express-error-handler');
+var errorHandler = expressErrorHandler({
+    static: {
+        '404' : './public/404.html'
+    }
+});
+app.use(expressErrorHandler.httpError(404));
+app.use(errorHandler);
+
 
 app.listen(process.env.PORT || 3000)

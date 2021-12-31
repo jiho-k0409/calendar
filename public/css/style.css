@@ -1,66 +1,58 @@
-
-body{
-  font-family: 'Noto Sans KR', sans-serif;
+body {
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 a {
   text-decoration: none;
   color: black;
-  
 }
-a:link{
-  color : black
+a:link {
+  color: black;
 }
 
-a:visited{
+a:visited {
   color: black;
 }
 #done {
-  display : inline
+  display: inline;
 }
 
-h3{
-  display :inline
+h3 {
+  display: inline;
 }
 
-#title{
+#title {
   text-align: center;
 }
 
-#mainContainer{
+#mainContainer {
   padding-left: 0px;
-  
 }
 .scheduleContainer {
-  cursor : default;
+  cursor: default;
   padding-bottom: 10px;
-  margin-bottom : 20px;
+  margin-bottom: 20px;
   border-bottom-style: solid;
   border-width: 0.7px;
   list-style: none;
   width: auto;
-  display: grid;
-  grid-template-columns: 1fr,50px;
-  grid-template-rows: 1fr;
+  display: flex;
+  justify-content: space-between;
 }
 
-.description{
+.description {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
+.for_create {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
 .create_btn {
-  
-  text-align: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: none;
-  background-color: tomato;
+  font-size: 30px;
+  color: tomato;
   padding: 5px 10px 5px 10px;
-  font-size: 20px;
-  color: white;
-  
 }
 
 .btn {
@@ -70,31 +62,74 @@ h3{
   padding: 5px 10px 5px 10px;
   font-size: 15px;
   color: white;
-  
 }
 
-.month{
+.month {
   list-style: none;
-  
+
   margin-right: 10px;
-  margin-left: 10px ;
+  margin-left: 10px;
   text-align: center;
 }
 
-.month_container{
+.month_container {
   text-align: center;
   justify-content: center;
-  margin-bottom: 30px ;
+  margin-bottom: 30px;
   padding-left: 30px;
   padding-right: 30px;
   display: grid;
-  grid-template-columns: repeat(13,70px);
+  grid-template-columns: repeat(12, 70px);
   grid-template-rows: 30px;
 }
 
-#create{
+#create {
   justify-content: center;
   display: grid;
   row-gap: 10px;
-  grid-template-columns: minmax(auto,700px);
+  grid-template-columns: minmax(auto, 700px);
+}
+
+.delete_form {
+  margin-bottom: 10px;
+}
+
+.form_container {
+  display: inline;
+}
+
+#toDo{
+  resize: none;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+#for_phone{
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  .month_container {
+    grid-template-columns: repeat(6, 70px);
+    grid-template-rows: repeat(2, 30px);
+  }
+  #for_desk{
+    display: none;
+  }
+  #for_phone{
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    
+  }
+  
+    
+  
+}
+
+@media screen and (min-width:481px) and (max-width: 768px) {
+  .month_container {
+    grid-template-columns: repeat(6, 80px);
+    grid-template-rows: repeat(2, 30px);
+  }
 }

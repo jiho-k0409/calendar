@@ -3,8 +3,12 @@
 <%- include('./partial/head.ejs') %> 
 <body>
   <%- include('./partial/today.ejs') %> 
-<form id='create' action="/create/process" method="post">
-    <select name="month" id="month">
+  <a id="title" href="/"><h1>TODOLIST</h1></a>
+
+
+<form id='create' action="/create/process" method="post"   >
+    <label for="month">달을 선택하세요</label>
+    <select name="month" id="month" >
       <option value="1">1 월</option>
       <option value="2">2월</option>
       <option value="3">3월</option>
@@ -18,6 +22,7 @@
       <option value="11">11월</option>
       <option value="12">12월</option>
     </select>
+    <label for="date">날짜를 선택하세요</label>
     <select name="date" id="date">
       <option value="1">1일</option>
       <option value="2">2일</option>
@@ -55,6 +60,5 @@
     <input class="btn" type="submit">
   </form>
   <script src="/js/date.js"></script>
-  <script src="/js/selected.js"></script>
 </body>
 </html>
