@@ -1,18 +1,25 @@
-
     <nav >
       <ul id="for_desk" class="month_container">
-        <li class="month" id="jan"><a href="/?month=1">1월</a></li>
-        <li class="month" id="feb"><a href="/?month=2">2월</a></li>
-        <li class="month" id="mar"><a href="/?month=3">3월</a></li>
-        <li class="month" id="apr"><a href="/?month=4">4월</a></li>
-        <li class="month" id="may"><a href="/?month=5">5월</a></li>
-        <li class="month" id="jun"><a href="/?month=6">6월</a></li>
-        <li class="month" id="jul"><a href="/?month=7">7월</a></li>
-        <li class="month" id="aug"><a href="/?month=8">8월</a></li>
-        <li class="month" id="sep"><a href="/?month=9">9월</a></li>
-        <li class="month" id="oct"><a href="/?month=10">10월</a></li>
-        <li class="month" id="nov"><a href="/?month=11">11월</a></li>
-        <li class="month" id="dec"><a href="/?month=12">12월</a></li>
+        <% const makeLi= (month)=>{%>
+          <% if(selectedMonth==month){%>
+          <li class="month"><a style="color:tomato;" href="/?month=<%= month %>"><%= month %>월</a></li>
+        <%}else{%>
+          <li class="month"><a href="/?month=<%= month %>"><%= month %>월</a></li>
+        <%} %> 
+        <%} %> 
+        <%makeLi(1)%>
+        <%makeLi(2)%>
+        <%makeLi(3)%>
+        <%makeLi(4)%>
+        <%makeLi(5)%>
+        <%makeLi(6)%>
+        <%makeLi(7)%>
+        <%makeLi(8)%>
+        <%makeLi(9)%>
+        <%makeLi(10)%>
+        <%makeLi(11)%>
+        <%makeLi(12)%>
+
       </ul>
       <div id="for_phone">
         <%var dateObj = new Date();%>

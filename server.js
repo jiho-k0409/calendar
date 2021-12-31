@@ -63,7 +63,8 @@ app.get('/', (req, res)=>{
 
 
 app.get('/create',(req,res)=>{
-  res.render('create')
+  month=req.query.month
+  res.render('create',{month:selectedMonth})
 })
 
 app.post('/create/process', (req,res)=>{

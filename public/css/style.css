@@ -29,7 +29,6 @@ h3 {
   padding-left: 0px;
 }
 .scheduleContainer {
-  cursor: default;
   padding-bottom: 10px;
   margin-bottom: 20px;
   border-bottom-style: solid;
@@ -46,11 +45,11 @@ h3 {
 }
 .for_create {
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  bottom: 15px;
+  right: 15px;
 }
 .create_btn {
-  font-size: 30px;
+  font-size: 35px;
   color: tomato;
   padding: 5px 10px 5px 10px;
 }
@@ -107,6 +106,21 @@ h3 {
   display: none;
 }
 
+.noticeContainer {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom-style: solid;
+  border-width: 0.7px;
+  list-style: none;
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.notice{
+  text-align: center;
+}
+
 @media screen and (max-width: 200px) {
   .month_container {
     grid-template-columns: repeat(6, 70px);
@@ -131,7 +145,13 @@ h3 {
   .description{
     font-size: 15px;
   }
+  .notice{
+    font-size: 15px;
+  }
 }
+
+
+
 
 @media screen and (min-width:201px) and (max-width: 480px) {
   .month_container {
@@ -147,6 +167,9 @@ h3 {
     justify-content: space-between;
     margin-bottom: 15px;
     
+  }
+  .notice{
+    font-size: 15px;
   }
 }
 
