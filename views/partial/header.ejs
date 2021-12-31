@@ -41,7 +41,12 @@
         <%} %>
         
       <a href="/?month=<%= linkBack %>"><i class="fas fa-angle-left angle"></i></a>
-      <span id="p_month"><%= `${selectedMonth}월` %></span>
+      <%if (selectedMonth=='오늘 일정'){%>
+        <span id="p_month"><%= selectedMonth %></span>
+      <%}else{%>
+        <span id="p_month"><%= `${selectedMonth}월` %></span>
+      <%}%>
+      
       <a href="/?month=<%= link %>"><i class="fas fa-angle-right angle"></i></a>
       </div>
     </nav>

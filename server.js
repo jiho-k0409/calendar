@@ -84,11 +84,14 @@ app.get('/update',(req,res)=>{
 })
 
 app.post('/update/process', (req,res)=>{
-  let month = req.query.month
-  let date = req.query.date
+  let month = req.body.month
+  month = month.split(' ',2)[0]
+  let date = req.body.date
+  let toDo = req.body.toDo
   fs.writeFile(`./public/data/${month}.${date}.txt`,toDo,(err)=>{
     if (err) throw err;
   })
+  
   res.redirect(301,`/?month=${month}`)
 })
 
