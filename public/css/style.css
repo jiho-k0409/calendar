@@ -29,6 +29,7 @@ h3 {
   padding-left: 0px;
 }
 .scheduleContainer {
+  padding-bottom: 5px;
   margin-bottom: 20px;
   border-bottom-style: solid;
   border-width: 0.7px;
