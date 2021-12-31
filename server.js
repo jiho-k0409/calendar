@@ -2,20 +2,19 @@ var express = require('express');
 var fs = require('fs');
 var sA = require('./sort')
 var dateObj = new Date();
-var nowMonth = dateObj.getUTCMonth() + 1; //months from 1-12
+var nowMonth = dateObj.getUTCMonth() + 1;
 var nowDay = dateObj.getUTCDate();
 
 
 
 const app = express();
-//const port = 3000;
 var router = express.Router();
 
 
 
 app.use(express.static('public'));
 app.use(express.json()); // for parsing application/json
-app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
 app.set('view engine','ejs');
 
 app.get('/', (req, res)=>{
