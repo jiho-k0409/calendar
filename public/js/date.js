@@ -8,3 +8,12 @@ const Month = document.querySelector('#todayMonth')
 Month.innerHTML = month
 const Day = document.querySelector('#todayDate')
 Day.innerHTML = day
+
+const setDate=()=>{
+    Month.innerHTML = month
+    Day.innerHTML = day
+    console.log(month, day)
+}
+
+init = setInterval(setDate, 1000);
+
