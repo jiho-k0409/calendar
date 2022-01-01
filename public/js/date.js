@@ -12,7 +12,6 @@ Day.innerHTML = day
 const setDate=()=>{
     Month.innerHTML = month
     Day.innerHTML = day
-    console.log(month, day)
 }
 
 init = setInterval(setDate, 1000);
