@@ -76,9 +76,9 @@ app.post('/create/process', (req,res)=>{
   res.redirect(301,`/?month=${month}`)
 })
 
-app.get('/update',(req,res)=>{
-  let month = req.query.month
-  let date = req.query.date
+app.post('/update',(req,res)=>{
+  let month = req.body.month
+  let date = req.body.date
   const file = fs.readFileSync(`./public/data/${month}.${date}.txt`,'utf-8')
   res.render('update',{month:month,date:date,file:file})
 })
@@ -108,7 +108,7 @@ app.post('/delete_process',(req,res)=>{
 })
 
 
-
+/*
 var expressErrorHandler = require('express-error-handler');
 var errorHandler = expressErrorHandler({
     static: {
@@ -116,7 +116,7 @@ var errorHandler = expressErrorHandler({
     }
 });
 app.use(expressErrorHandler.httpError(404));
-app.use(errorHandler);
+app.use(errorHandler);*/
 
 
 app.listen(process.env.PORT || 3000)

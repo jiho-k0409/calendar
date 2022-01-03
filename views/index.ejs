@@ -27,7 +27,11 @@
                     <input type="hidden" name="date"value="<%= date[i]%>"> 
                     <input class="btn delete_btn" type="submit" value="삭제"></input>
                   </form>
-                    <a class="update" href="/update?month=<%= selectedMonth %>&date=<%= splitedDate %>  "><button class="btn">수정</button></a>
+                  <form class="update_form" action="/update" method="post">
+                    <input type="hidden" name="month" value="<%= selectedMonth %>">
+                    <input type="hidden" name="date" value="<%= splitedDate %>">
+                    <input class="btn" type="submit" value="수정">
+                  </form>
                 </div>
               <% } %> 
                 
