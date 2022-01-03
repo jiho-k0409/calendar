@@ -114,6 +114,7 @@ h3 {
 #toDo{
   resize: none;
   font-family: "Noto Sans KR", sans-serif;
+  height: 200px;
 }
 
 #for_phone{
