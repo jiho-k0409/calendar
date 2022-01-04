@@ -107,6 +107,9 @@ app.post('/delete_process',(req,res)=>{
   res.redirect(301,`/?month=${month}`)
 })
 
+app.get('/code',(req,res)=>{
+  res.render('codegen')
+})
 
 /*
 var expressErrorHandler = require('express-error-handler');
