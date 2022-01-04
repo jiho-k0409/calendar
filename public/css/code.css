@@ -1,4 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Do+Hyeon&family=Noto+Sans&family=Noto+Sans+KR&display=swap');
+.title{
+    text-align: center;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 50px;
+}
 .code{
     text-align: center;
     font-size: 50px;
 }
+.setting{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.btn {
+    font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 20px;
+    border: none;
+    background-color: #394B61;
+    padding: 5px 10px 5px 10px;
+    font-size: 15px;
+    color: white;
+  }
