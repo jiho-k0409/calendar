@@ -11,7 +11,7 @@ const three = document.querySelector('.three')
 const five = document.querySelector('.five')
 const ten = document.querySelector('.ten')
 
-let majorList=['C','C#','D♭','D','D#','E♭','E','E#','F♭','F','F#','G♭','G','G#','A♭','A','A#','B♭','B']
+let majorList=['C','C#','D♭','D','D#','E♭','E','F','F#','G♭','G','G#','A♭','A','A#','B♭','B']
 let minorList = majorList.map(code=>`${code}m`)
 let dimList = majorList.map(code=>`${code}dim`)
 let augList = majorList.map(code=>`${code}aug`)
