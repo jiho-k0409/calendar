@@ -2,6 +2,7 @@ const codeDisplay = document.querySelector('.code');
 const manual = document.querySelector('.manual');
 const next = document.querySelector('.next');
 const selectCode=document.querySelector('.code_setting')
+const remained = document.querySelector('.remain_time')
 //const selectInterval = document.querySelector('.time_setting')
 const codeContainer=document.querySelector('.code_container')
 const setContainer = document.querySelector('.set_container')
@@ -108,6 +109,8 @@ next.addEventListener('click',()=>{
 });
 
 getInterval.addEventListener('change',()=>{
+    next.style.display = 'none'
+    goneTime=0
     let userInput = getInterval.value
     let userInputFloat = parseFloat(userInput)
     if(userInput===''){
@@ -126,41 +129,10 @@ getInterval.addEventListener('change',()=>{
     }else{
         alert('숫자만 입력해주세요')
     }
-/*
-    if(userInputFloat===NaN){
-        alert('시간은 숫자만 입력하세요')
-        return
-    }else if(userInputFloat<0){
-        alert('시간이 음수인게 말이 된다고 생각하십니까')
-        return
-    }else{
-        interval = userInputFloat*1000
-        clearInterval(init);
-        init = setInterval(showCode,interval);
-        displayInterval.innerHTML=`${userInputFloat}초`
-    }*/
 })
 manual.addEventListener('click',()=>{
     next.style.display='inline';
     clearInterval(init);
-});
-three.addEventListener('click',()=>{
-    next.style.display='none';
-    interval = 3000;
-    clearInterval(init);
-    init = setInterval(showCode,interval);
-});
-five.addEventListener('click',()=>{
-    next.style.display='none';
-    interval = 5000;
-    clearInterval(init);
-    init = setInterval(showCode,interval);
-});
-ten.addEventListener('click',()=>{
-    next.style.display='none';
-    interval = 10000;
-    clearInterval(init);
-    init = setInterval(showCode,interval);
 });
 
 
