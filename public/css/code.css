@@ -36,9 +36,18 @@
     display: none;
 }
 
-.set_container{
-    display: none;
+.user_input{
+    width: 100px;
 }
+
+.interval{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.manual{
+    margin-bottom: 10px;
+}
+
 .show{
     display: grid;
     grid-row-gap: 5px;
